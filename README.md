@@ -102,7 +102,7 @@ Port DESTINATIE (16biti) = portul receptorului (aplicatia destinatara)
 Clientul a indicat destinatia 15001 si permite ca OS-ul sa livreze datagrama socket-ului serverului
 ```
 
-#L2_03 - Proxy intre doua procese (Intre un Server si un Client)
+# L2_03 - Proxy intre doua procese (Intre un Server si un Client)
 
 
 rezultate proxy
