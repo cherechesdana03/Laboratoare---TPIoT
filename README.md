@@ -1,4 +1,4 @@
-# Proiect L1 - Transmitere mesaj într-un inel de 3 procese (TCP/UDP)
+# L2_01 - Transmitere mesaj într-un inel de 3 procese (TCP/UDP)
 
 Acest repository conține rezolvarea task-ului de transmitere a unui mesaj în inel folosind socket-uri.
 
@@ -56,7 +56,51 @@ Observații: Server TCP în starea LISTENING. PID-ul asociat este 4708.
 ```
 
 
+# L2_02 - Transfer un fișier de la un proces la altul - doar UDP
 
+## rezultate transfer de fisier: 
+ ```text
+##server.py executat:
+Serverul UDP este pornit și ascultă pe 127.0.0.1:15001...
+Am primit pachetul 0, 101 octeți.
+Transferul fișierului s-a încheiat.
+Fișier salvat: fisier_primit.bin
+
+
+##client.py executat:
+Pachetul 0 a fost transmis.
+Fișierul a fost transferat cu succes!
+
+##rezultat complet implica crearea unui nou fisier de tip ".bin" in folderul ude se afla ambele procese
+## ---- Procesul 1: clientudp.py -----
+#  Citeste fisierul creat in prealabil pe disc (citeste binar)
+```
+
+
+
+## INFORMATII SUPLIMENTARE:
+ ```text
+Adresele sursa si destinatie sunt identice (acelasi laptop cu localhost 127.0.0.1)
+### --- OSI 		      -----
+## ---- Python - Application  ----- 
+## ---- UDP - transport layer : port SURSA, DEST, lungime, suma de control-----
+## ---- Adrese IP SURSA si DEST - Internet layer ----- 
+## ---- Network access        ----
+
+
+## ---- UDP
+# NU necesita confirmare de primire 
+# Protocol cap-la-cap
+# Antetul UDP: Octet0:Octet1:Octet2:Octet3
+# Unde O0 si O1 formeaza Portul SURSA (+ lungimea sa)
+# Unde 02 si O2 formeaza Portul DESTINATIE (+ suma de control)
+
+Port SURSA (16biti) = portul expeditorului (clientul nu are specificat portul SURSA aici)
+Lasa automat un port local buffer atunci cand expeditorul (clientul trimite prima datagrama)
+
+Port DESTINATIE (16biti) = portul receptorului (aplicatia destinatara)
+Clientul a indicat destinatia 15001 si permite ca OS-ul sa livreze datagrama socket-ului serverului
+```
 
 ## L2_03 - Proxy intre doua procese (Intre un Server si un Client)
 
