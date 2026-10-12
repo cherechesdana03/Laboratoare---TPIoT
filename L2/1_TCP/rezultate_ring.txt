@@ -1,0 +1,31 @@
+py node2.py
+
+rezultat: 
+[SERVER] Asculta pe 127.0.0.1:5002
+[SERVER] Conexiune de la ('127.0.0.1', 55585)
+[SERVER] Mesaj primit: Salut! Acesta este mesajul initial.
+[NODE 2] Retransmit mesajul: Salut! Acesta este mesajul initial. -> Node 2
+[CLIENT] Raspuns de la 127.0.0.1:5003: Salut! Acesta este mesajul initial. -> Node 2
+
+
+py node3.py
+
+rezultat: 
+[SERVER] Asculta pe 127.0.0.1:5003
+[SERVER] Conexiune de la ('127.0.0.1', 55586)
+[SERVER] Mesaj primit: Salut! Acesta este mesajul initial. -> Node 2
+[NODE 3] Retransmit mesajul: Salut! Acesta este mesajul initial. -> Node 2 -> Node 3
+[CLIENT] Raspuns de la 127.0.0.1:5001: Salut! Acesta este mesajul initial. -> Node 2 -> Node 3
+
+py node1.py
+
+rezultat: 
+[SERVER] Asculta pe 127.0.0.1:5001
+[NODE 1] Trimit mesajul: Salut! Acesta este mesajul initial.
+[CLIENT] Raspuns de la 127.0.0.1:5002: Salut! Acesta este mesajul initial.
+[NODE 1] Confirmare de la Node 2: Salut! Acesta este mesajul initial.
+[SERVER] Conexiune de la ('127.0.0.1', 55587)
+[SERVER] Mesaj primit: Salut! Acesta este mesajul initial. -> Node 2 -> Node 3
+
+[NODE 1] Mesajul a parcurs inelul!
+[NODE 1] Mesaj final: Salut! Acesta este mesajul initial. -> Node 2 -> Node 3
